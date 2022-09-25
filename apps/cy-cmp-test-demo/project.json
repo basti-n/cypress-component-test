@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/cy-cmp-test-demo",
         "index": "apps/cy-cmp-test-demo/src/index.html",
@@ -18,9 +20,13 @@
           "apps/cy-cmp-test-demo/src/favicon.ico",
           "apps/cy-cmp-test-demo/src/assets"
         ],
-        "styles": ["apps/cy-cmp-test-demo/src/styles.scss"],
+        "styles": [
+          "apps/cy-cmp-test-demo/src/styles.scss"
+        ],
         "stylePreprocessorOptions": {
-          "includePaths": ["assets/styles"]
+          "includePaths": [
+            "assets/styles"
+          ]
         },
         "scripts": []
       },
@@ -86,10 +92,21 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/cy-cmp-test-demo"],
+      "outputs": [
+        "coverage/apps/cy-cmp-test-demo"
+      ],
       "options": {
         "jestConfig": "apps/cy-cmp-test-demo/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "component-test": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/cy-cmp-test-demo/cypress.config.ts",
+        "testingType": "component",
+        "skipServe": true,
+        "devServerTarget": "cy-cmp-test-demo:build"
       }
     }
   },
