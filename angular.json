@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "cy-cmp-test-demo": "apps/cy-cmp-test-demo",
+    "cy-cmp-test-demo-e2e": "apps/cy-cmp-test-demo-e2e"
+  }
+}

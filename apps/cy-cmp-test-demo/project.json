@@ -1,0 +1,94 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/cy-cmp-test-demo/src",
+  "prefix": "cypress-component-test",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/cy-cmp-test-demo",
+        "index": "apps/cy-cmp-test-demo/src/index.html",
+        "main": "apps/cy-cmp-test-demo/src/main.ts",
+        "polyfills": "apps/cy-cmp-test-demo/src/polyfills.ts",
+        "tsConfig": "apps/cy-cmp-test-demo/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/cy-cmp-test-demo/src/favicon.ico",
+          "apps/cy-cmp-test-demo/src/assets"
+        ],
+        "styles": ["apps/cy-cmp-test-demo/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/cy-cmp-test-demo/src/environments/environment.ts",
+              "with": "apps/cy-cmp-test-demo/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "cy-cmp-test-demo:build:production"
+        },
+        "development": {
+          "browserTarget": "cy-cmp-test-demo:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "cy-cmp-test-demo:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/cy-cmp-test-demo/**/*.ts",
+          "apps/cy-cmp-test-demo/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/cy-cmp-test-demo"],
+      "options": {
+        "jestConfig": "apps/cy-cmp-test-demo/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
