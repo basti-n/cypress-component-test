@@ -1,0 +1,5 @@
+@use 'styleguide' as *;
+
+h1 {
+  @include headline;
+}

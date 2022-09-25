@@ -19,6 +19,9 @@
           "apps/cy-cmp-test-demo/src/assets"
         ],
         "styles": ["apps/cy-cmp-test-demo/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["assets/styles"]
+        },
         "scripts": []
       },
       "configurations": {
